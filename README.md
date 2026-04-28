@@ -12,7 +12,7 @@ O objetivo completo do desafio está em [desafio.md](desafio.md).
 ## Exemplos de perguntas
 
 - Qual o faturamento da Empresa SuperTechIABrazil?
-- Qual o nome do diretor financeiro citado no documento?
+- Qual o valor e empresa que obteve o maior faturamento ?
 - Qual é a capital da França? (fora do contexto, deve recusar)
 
 ## Arquitetura
