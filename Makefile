@@ -13,23 +13,26 @@ help:
 	@echo "  make db_clear - Clear database schema and recreate vector extension"
 
 ingest:
-	@$(PYTHON) src/ingest.py
+	@docker compose exec -T app python src/ingest.py
 
 search:
-	@$(PYTHON) src/search.py
+	@docker compose exec -T app python src/search.py
 
 chat:
-	@$(PYTHON) src/chat.py
+	@docker compose exec app python src/chat.py
 
 venv:
 	@/bin/sh -c "if [ ! -x '$(PYTHON)' ]; then python3 -m venv '$(VENV_DIR)'; fi"
 	@$(PYTHON) -m pip install -r requirements.txt
 
-up: venv
-	@docker compose up -d
+up:
+	@docker compose up -d --build
 
 down:
 	@docker compose down
+
+down_clean:
+	@docker compose down -v --remove-orphans
 
 db_clear:
 	@docker compose exec -T postgres psql -U postgres -d rag -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"

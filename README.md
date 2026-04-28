@@ -2,9 +2,9 @@
 
 ## Requisitos
 
-- Python 3.10+
 - Docker e Docker Compose
 - Chave da API do Google (Gemini)
+- Make (opcional, mas recomendado para facilitar os comandos)
 
 ## Configuracao
 
@@ -20,34 +20,26 @@ cp .env.example .env
 GOOGLE_API_KEY=SEU_TOKEN_AQUI
 ```
 
-## Subir o banco
+## Subir tudo (banco + app)
 
 ```bash
-docker compose up -d
-```
-
-## Instalar dependencias
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+make up
 ```
 
 ## Ingestao do PDF
 
 ```bash
-python src/ingest.py
+make ingest
 ```
 
 ## Busca rapida (teste)
 
 ```bash
-python src/search.py
+make search
 ```
 
 ## Chat interativo
 
 ```bash
-python src/chat.py
+make chat
 ```
